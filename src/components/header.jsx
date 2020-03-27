@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useCallback } from "react"
 import styled from "styled-components"
 import useDocumentScrollThrottled from "../hooks/useDocumentScrollThrottled"
 
@@ -49,10 +49,10 @@ const MenuBar = () => {
   const MINIMUM_SCROLL = 80
   const TIMEOUT_DELAY = 400
 
-  useDocumentScrollThrottled(callbackData => {
+  const memorizedCallback = useCallback(callbackData => {
     const { previousScrollTop, currentScrollTop } = callbackData
 
-    console.log("prev ", previousScrollTop, " current ", currentScrollTop)
+    // console.log("prev ", previousScrollTop, " current ", currentScrollTop)
 
     const isScrolledDown = previousScrollTop < currentScrollTop
     const isMinimumScrolled = currentScrollTop > MINIMUM_SCROLL
@@ -62,7 +62,9 @@ const MenuBar = () => {
     setTimeout(() => {
       setShouldHideHeader(isScrolledDown && isMinimumScrolled)
     }, TIMEOUT_DELAY)
-  })
+  }, [])
+
+  useDocumentScrollThrottled(memorizedCallback)
 
   const shadowStyle = shouldShowShadow ? "shadow" : ""
   const hiddenStyle = shouldHideHeader ? "hidden" : ""
