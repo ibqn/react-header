@@ -5,7 +5,7 @@ import Header from "./components/header"
 import Body from "./components/body"
 import styled from "styled-components"
 
-const Wrapper = styled.div`
+const Wrapper = styled("div")`
   text-align: center;
   height: 100%;
 `
