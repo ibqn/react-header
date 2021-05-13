@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react"
 import styled from "styled-components"
-import useDocumentScrollThrottled from "../hooks/useDocumentScrollThrottled"
+import useDocumentScrollThrottled from "../hooks/use-document-scroll-throttled"
 
 const Header = styled.header`
   position: fixed;
@@ -49,7 +49,7 @@ const MenuBar = () => {
   const MINIMUM_SCROLL = 80
   const TIMEOUT_DELAY = 400
 
-  const memorizedCallback = useCallback(callbackData => {
+  const memorizedCallback = useCallback((callbackData) => {
     const { previousScrollTop, currentScrollTop } = callbackData
 
     // console.log("prev ", previousScrollTop, " current ", currentScrollTop)
