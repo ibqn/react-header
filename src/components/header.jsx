@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react"
 import styled from "styled-components"
-import useDocumentScrollThrottled from "../hooks/use-document-scroll-throttled"
+import useDocumentScrollThrottled from "hooks/use-document-scroll-throttled"
 
 const Header = styled.header`
   position: fixed;
